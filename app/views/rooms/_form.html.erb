@@ -28,10 +28,12 @@
 
   <div class="field form-group block input-group w-full rounded pt-8">
     <p>
-      <%= form.label t('default.room.name') , style: "display: inline" %> 
+      <%= form.label t('default.room.name') , style: "display: inline" %>
       <span class="text-muted small text-red-500" style="display: inline"> *Required  </span>
       <%= image_tag('lock.svg', width: '15', height: '15', alt: 'lock', class: 'lock-icon-placement lock-visibility', title: 'Disabled because "Use Shared Code" is enabled') %>
     </p>
+    <%= form.text_field :name, :required => true,  class: "form-control rounded-none rounded input mt-1 block w-full" %>
+  </div>
     <%= form.text_field :name, :required => true,  class: "form-control rounded-none rounded input mt-1 block w-full check-disabled" %>
   </div>
   <div class="field form-group input-group">
@@ -62,7 +64,7 @@
   </div>
 
   <%= form.hidden_field :moderator, value: @room.moderator %>
-  <%= form.hidden_field :viewer, value: @room.viewer %> 
+  <%= form.hidden_field :viewer, value: @room.viewer %>
 
   <% @lockSettings = @room.settings.select { |key, value| key.start_with?("lock")} %>
   <% @recordingSettings = @room.settings.select { |key, value| !key.start_with?("lock") && Room::RECORDING_SETTINGS.include?(key.to_sym)} %>
@@ -104,7 +106,7 @@
             <svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
               <path fill-rule="evenodd" d="M19 10.5a8.5 8.5 0 11-17 0 8.5 8.5 0 0117 0zM8.25 9.75A.75.75 0 019 9h.253a1.75 1.75 0 011.709 2.13l-.46 2.066a.25.25 0 00.245.304H11a.75.75 0 010 1.5h-.253a1.75 1.75 0 01-1.709-2.13l.46-2.066a.25.25 0 00-.245-.304H9a.75.75 0 01-.75-.75zM10 7a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd" />
             </svg>
-          </i> 
+          </i>
           <br>
         <% end %>
       </div>
@@ -127,7 +129,7 @@
               <svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
                 <path fill-rule="evenodd" d="M19 10.5a8.5 8.5 0 11-17 0 8.5 8.5 0 0117 0zM8.25 9.75A.75.75 0 019 9h.253a1.75 1.75 0 011.709 2.13l-.46 2.066a.25.25 0 00.245.304H11a.75.75 0 010 1.5h-.253a1.75 1.75 0 01-1.709-2.13l.46-2.066a.25.25 0 00-.245-.304H9a.75.75 0 01-.75-.75zM10 7a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd" />
               </svg>
-            </i> 
+            </i>
             <br>
           <% end %>
         </div>
@@ -136,7 +138,7 @@
   <% end %>
 
   <!-- Shared Room Stuff -->
-  <%= form.hidden_field :code, id: 'room_code_value', value: @room.code %> 
+  <%= form.hidden_field :code, id: 'room_code_value', value: @room.code %>
 
 	<% if @shared_rooms_enabled %>
 		<div class="field form-group input-group w-full pt-4">
