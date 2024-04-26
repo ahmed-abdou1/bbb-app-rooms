@@ -68,6 +68,7 @@ module BbbHelper
       welcome: @chosen_room.welcome,
       record: record,
       logoutURL: autoclose_url,
+      logo: string_to_bool(@chosen_room.logo),
       lockSettingsDisableCam: string_to_bool(@chosen_room.lockSettingsDisableCam),
       lockSettingsDisableMic: string_to_bool(@chosen_room.lockSettingsDisableMic),
       lockSettingsDisableNote: string_to_bool(@chosen_room.lockSettingsDisableNote),

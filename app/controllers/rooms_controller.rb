@@ -374,6 +374,7 @@ class RoomsController < ApplicationController
     params.require(:room).permit(
       :name,
       :description,
+      :logo,
       :welcome,
       :moderator,
       :viewer,
@@ -395,6 +396,7 @@ class RoomsController < ApplicationController
       handler_legacy: handler_legacy,
       name: launch_params['resource_link_title'] || t('default.room.room'),
       description: launch_params['resource_link_description'] || '',
+      logo: launch_params['branding_image'],
       welcome: '',
       recording: launch_params['custom_params'].key?('custom_record') ? launch_params['custom_params']['custom_record'] : true,
       wait_moderator: message_has_custom?(launch_params, 'wait_moderator') || false,
@@ -422,6 +424,7 @@ class RoomsController < ApplicationController
       handler_legacy: handler_legacy,
       name: room['name'],
       description: room['description'],
+      logo: room['branding_image'],
       welcome: room['welcome'],
       moderator: room['moderator'],
       viewer: room['viewer'],

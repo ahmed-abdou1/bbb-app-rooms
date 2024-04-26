@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_11_02_145703) do
+ActiveRecord::Schema.define(version: 2024_04_26_192235) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 2023_11_02_145703) do
     t.string "code"
     t.string "shared_code"
     t.boolean "use_shared_code"
+    t.string "logo"
     t.index ["code"], name: "index_rooms_on_code", unique: true
     t.index ["tenant", "handler"], name: "index_rooms_on_tenant_and_handler", unique: true
     t.index ["tenant", "handler_legacy"], name: "index_rooms_on_tenant_and_handler_legacy", unique: true
